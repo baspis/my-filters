@@ -16,31 +16,45 @@ Sources:
 https://raw.githubusercontent.com/baspis/my-filters/main/dns/filter.txt
 ```
 
-AdGuard Home → DNS blocklists, or AdGuard DNS custom filters.
+AdGuard Home → DNS blocklists, or AdGuard DNS custom filters (including AdGuard for iOS → DNS protection).
 
-## Ad filter (browser)
+## Ad filter — PC / desktop browser
 
-Sources:
+Full merge for uBlock Origin, AdGuard extension on PC, etc.
 
-- AdGuard — filters `#2` `#3` `#17` `#14` `#7` `#11` (adtidy chromium)
-- 280blocker — `280blocker_adblock_YYYYMM.txt` (UTC month)
-
-**Subscribe URL**
+Sources: AdGuard `#2` `#3` `#17` `#14` `#7` `#11` + 280blocker adblock (UTC month).
 
 ```text
 https://raw.githubusercontent.com/baspis/my-filters/main/ad/filter.txt
 ```
 
-uBlock Origin / AdGuard extension → custom filter lists.
+## Ad filter — iPhone / Safari (lightweight)
+
+**Do not** use `ad/filter.txt` on iOS (exceeds Safari rule limits).
+
+Instead:
+
+1. Enable built-in AdGuard filters **#2, #3, #7, #11, #14, #17**
+2. Add **one** custom filter:
+
+```text
+https://raw.githubusercontent.com/baspis/my-filters/main/ad/filter-ios.txt
+```
+
+Sources (deduplicated):
+
+- [280blocker](https://280blocker.net/) — `280blocker_adblock_YYYYMM.txt`
+- [AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2) — `jpf-plus.txt` (Yuki2718)
 
 ## Rebuild locally
 
 ```bash
 python3 build/build_dns.py
 python3 build/build_ad.py
+python3 build/build_ad_ios.py
 ```
 
-GitHub Actions rebuilds both daily (`build-filters.yml`).
+GitHub Actions rebuilds all three daily (`build-filters.yml`).
 
 ## Licenses
 
