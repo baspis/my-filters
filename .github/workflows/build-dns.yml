@@ -30,5 +30,8 @@ jobs:
             exit 0
           fi
           git add dns/filter.txt
+          if [ -f sources/280blocker.cache.txt ]; then
+            git add sources/280blocker.cache.txt
+          fi
           git commit -m "chore(dns): rebuild merged filter"
           git push

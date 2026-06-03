@@ -2,7 +2,7 @@
 ! Description: AdGuard DNS filter + HaGeZi Multi PRO + 280blocker (deduplicated)
 ! Homepage: https://github.com/baspis/my-filters
 ! License: See README (sources retain their own licenses)
-! Last modified: 2026-06-03 22:01 JST
+! Last modified: 2026-06-03 22:03 JST
 !
 ||as-pet.ams3.cdn.digitaloceanspaces.com^
 ||cdclub.net^

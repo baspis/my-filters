@@ -13,17 +13,32 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "dns" / "filter.txt"
+BLOCKER_CACHE = ROOT / "sources" / "280blocker.cache.txt"
 
-SOURCES = [
+FETCH_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (compatible; baspis-my-filters/1.0; "
+        "+https://github.com/baspis/my-filters)"
+    ),
+    "Accept": "text/plain,*/*",
+    "Accept-Language": "ja,en;q=0.9",
+}
+
+ADGUARD_URLS = [
     (
         "AdGuard DNS filter",
         "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
     ),
     (
-        "HaGeZi Multi PRO",
-        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt",
+        "AdGuard DNS filter (GitHub mirror)",
+        "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt",
     ),
 ]
+
+HAGEZI_URL = (
+    "HaGeZi Multi PRO",
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt",
+)
 
 DOMAIN_RULE = re.compile(
     r"^\|\|([a-z0-9][a-z0-9._-]*\.)*[a-z0-9][a-z0-9._-]*\^",
@@ -32,12 +47,20 @@ DOMAIN_RULE = re.compile(
 
 
 def fetch(url: str, timeout: int = 120) -> str:
-    req = urllib.request.Request(
-        url,
-        headers={"User-Agent": "baspis-my-filters-build/1.0"},
-    )
+    req = urllib.request.Request(url, headers=FETCH_HEADERS)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read().decode("utf-8", errors="replace")
+
+
+def fetch_first(urls: list[tuple[str, str]]) -> tuple[str, str]:
+    last_error: Exception | None = None
+    for name, url in urls:
+        try:
+            return name, fetch(url)
+        except Exception as exc:
+            print(f"WARN: {name} failed ({url}): {exc}", file=sys.stderr)
+            last_error = exc
+    raise RuntimeError("All URLs failed") from last_error
 
 
 def blocker_urls() -> list[str]:
@@ -56,20 +79,32 @@ def blocker_urls() -> list[str]:
     return candidates
 
 
-def fetch_280blocker() -> tuple[str, str]:
+def fetch_280blocker() -> tuple[str, str, bool]:
+    """Return (label, text, updated_cache)."""
     last_error: Exception | None = None
     for url in blocker_urls():
         try:
-            return url, fetch(url)
+            text = fetch(url)
+            BLOCKER_CACHE.parent.mkdir(parents=True, exist_ok=True)
+            BLOCKER_CACHE.write_text(text, encoding="utf-8")
+            return f"280blocker ({url.split('/')[-1]})", text, True
         except urllib.error.HTTPError as exc:
             last_error = exc
-            if exc.code == 404:
+            if exc.code in (403, 404):
                 continue
             raise
         except urllib.error.URLError as exc:
             last_error = exc
             continue
-    raise RuntimeError("280blocker: no monthly URL responded") from last_error
+
+    if BLOCKER_CACHE.is_file():
+        print(
+            "WARN: 280blocker fetch failed; using cached sources/280blocker.cache.txt",
+            file=sys.stderr,
+        )
+        return "280blocker (cached)", BLOCKER_CACHE.read_text(encoding="utf-8"), False
+
+    raise RuntimeError("280blocker: fetch failed and no cache") from last_error
 
 
 def normalize_line(line: str) -> str:
@@ -77,7 +112,6 @@ def normalize_line(line: str) -> str:
 
 
 def domain_key(line: str) -> str | None:
-    """Return lowercase domain for ||domain^ rules, else None."""
     m = DOMAIN_RULE.match(line)
     if not m:
         return None
@@ -122,12 +156,14 @@ def merge_sources() -> tuple[list[str], list[str]]:
             added += 1
         log.append(f"{name}: +{added} unique ({len(rules)} parsed)")
 
-    for name, url in SOURCES:
-        text = fetch(url)
-        add_rules(name, parse_rules(text))
+    name, text = fetch_first(ADGUARD_URLS)
+    add_rules(name, parse_rules(text))
 
-    url, text = fetch_280blocker()
-    add_rules(f"280blocker ({url.split('/')[-1]})", parse_rules(text))
+    name, url = HAGEZI_URL
+    add_rules(name, parse_rules(fetch(url)))
+
+    label, text, _ = fetch_280blocker()
+    add_rules(label, parse_rules(text))
 
     log.append(f"Total unique rules: {len(merged)}")
     return merged, log
