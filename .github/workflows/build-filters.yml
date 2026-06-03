@@ -24,14 +24,11 @@ jobs:
       - name: Build ad filter
         run: python3 build/build_ad.py
 
-      - name: Build iOS/Safari ad filter
-        run: python3 build/build_ad_ios.py
-
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dns/filter.txt ad/filter.txt ad/filter-ios.txt
+          git add dns/filter.txt ad/filter.txt
           for f in sources/280blocker_dns.cache.txt sources/280blocker_ad.cache.txt; do
             [ -f "$f" ] && git add "$f"
           done

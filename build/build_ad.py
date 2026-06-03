@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Merge personal browser ad blocklists into ad/filter.txt."""
+"""Merge ad/filter.txt: 280blocker adblock + AdGuard Japanese filter Plus."""
 
 from __future__ import annotations
 
@@ -18,15 +18,31 @@ from common import (
 OUTPUT = ROOT / "ad" / "filter.txt"
 BLOCKER_CACHE = ROOT / "sources" / "280blocker_ad.cache.txt"
 
-ADGUARD_FILTER_IDS = (2, 3, 17, 14, 7, 11)
+JPF_PLUS_URLS = [
+    (
+        "AdGuard Japanese filter Plus",
+        "https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt",
+    ),
+    (
+        "AdGuard Japanese filter Plus (GitHub raw)",
+        "https://raw.githubusercontent.com/Yuki2718/adblock2/main/japanese/jpf-plus.txt",
+    ),
+]
+
+
+def fetch_first(urls: list[tuple[str, str]]) -> tuple[str, str]:
+    last_error: Exception | None = None
+    for name, url in urls:
+        try:
+            return name, fetch(url)
+        except Exception as exc:
+            print(f"WARN: {name} failed ({url}): {exc}", file=sys.stderr)
+            last_error = exc
+    raise RuntimeError("All URLs failed") from last_error
 
 
 def merge() -> tuple[list[str], list[str]]:
     merger = Merger()
-
-    for fid in ADGUARD_FILTER_IDS:
-        url = f"https://filters.adtidy.org/extension/chromium/filters/{fid}.txt"
-        merger.add(f"AdGuard filter #{fid}", parse_rules(fetch(url)))
 
     label, text = fetch_with_cache(
         "280blocker adblock",
@@ -34,6 +50,9 @@ def merge() -> tuple[list[str], list[str]]:
         BLOCKER_CACHE,
     )
     merger.add(label, parse_rules(text))
+
+    name, text = fetch_first(JPF_PLUS_URLS)
+    merger.add(name, parse_rules(text))
 
     return merger.finish(), merger.log
 
@@ -44,7 +63,8 @@ def main() -> int:
         write_filter(
             OUTPUT,
             "Personal merged ad filter",
-            "AdGuard #2,3,17,14,7,11 + 280blocker adblock (deduplicated)",
+            "280blocker adblock + AdGuard Japanese filter Plus (deduplicated). "
+            "Pair with built-in AdGuard #2,3,7,11,14,17 on iOS/PC.",
             rules,
             log,
         )
