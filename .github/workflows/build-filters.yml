@@ -1,4 +1,4 @@
-name: Build DNS filter
+name: Build filters
 
 on:
   schedule:
@@ -18,20 +18,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build merged DNS filter
+      - name: Build DNS filter
         run: python3 build/build_dns.py
+
+      - name: Build ad filter
+        run: python3 build/build_ad.py
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet dns/filter.txt; then
-            echo "No changes to dns/filter.txt"
+          git add dns/filter.txt ad/filter.txt
+          for f in sources/280blocker_dns.cache.txt sources/280blocker_ad.cache.txt; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if git diff --staged --quiet; then
+            echo "No changes"
             exit 0
           fi
-          git add dns/filter.txt
-          if [ -f sources/280blocker.cache.txt ]; then
-            git add sources/280blocker.cache.txt
-          fi
-          git commit -m "chore(dns): rebuild merged filter"
+          git commit -m "chore: rebuild merged dns and ad filters"
           git push

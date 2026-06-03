@@ -1,41 +1,47 @@
 # my-filters
 
-Personal merged blocklists (DNS now; browser ad filter later).
+Personal merged blocklists (DNS + browser ad), each as a single subscribe URL.
 
-## DNS filter (ready)
+## DNS filter
 
-Merged, deduplicated list from:
+Sources:
 
-- [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardSDNSFilter)
-- [HaGeZi Multi PRO](https://github.com/hagezi/dns-blocklists) (`adblock/pro.txt`)
-- [280blocker](https://280blocker.net/) AdGuard domain list (current month, JST)
+- AdGuard DNS filter — `filters.adtidy.org/.../15.txt`
+- [HaGeZi Multi PRO](https://github.com/hagezi/dns-blocklists) — `adblock/pro.txt`
+- [280blocker](https://280blocker.net/) — `280blocker_domain_ag_YYYYMM.txt` (UTC month)
 
-Unbreaker / exception lists are **not** included.
-
-### Subscribe URL
+**Subscribe URL**
 
 ```text
 https://raw.githubusercontent.com/baspis/my-filters/main/dns/filter.txt
 ```
 
-Use in **AdGuard Home** → DNS blocklists, or **AdGuard DNS** custom filters.
+AdGuard Home → DNS blocklists, or AdGuard DNS custom filters.
 
-Rebuild locally:
+## Ad filter (browser)
 
-```bash
-python3 build/build_dns.py
-```
+Sources:
 
-GitHub Actions rebuilds daily (`build-dns.yml`).
+- AdGuard — filters `#2` `#3` `#17` `#14` `#7` `#11` (adtidy chromium)
+- 280blocker — `280blocker_adblock_YYYYMM.txt` (UTC month)
 
-## Ad filter (planned)
-
-Browser filter will live at `ad/filter.txt` with URL:
+**Subscribe URL**
 
 ```text
 https://raw.githubusercontent.com/baspis/my-filters/main/ad/filter.txt
 ```
 
+uBlock Origin / AdGuard extension → custom filter lists.
+
+## Rebuild locally
+
+```bash
+python3 build/build_dns.py
+python3 build/build_ad.py
+```
+
+GitHub Actions rebuilds both daily (`build-filters.yml`).
+
 ## Licenses
 
-Source lists keep their own licenses. This repo only merges them for personal use.
+Source lists keep their own licenses. Personal use only.
