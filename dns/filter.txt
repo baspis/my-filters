@@ -2,7 +2,7 @@
 ! Description: AdGuard #15 + HaGeZi Multi PRO + 280blocker domain_ag (deduplicated)
 ! Homepage: https://github.com/baspis/my-filters
 ! License: See README (sources retain their own licenses)
-! Last modified: 2026-06-03 22:05 JST
+! Last modified: 2026-06-03 22:06 JST
 !
 ||as-pet.ams3.cdn.digitaloceanspaces.com^
 ||cdclub.net^
