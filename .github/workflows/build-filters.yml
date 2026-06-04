@@ -5,12 +5,18 @@ on:
     - cron: "15 3 * * *"
   workflow_dispatch:
 
+concurrency:
+  group: build-filters-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
+
     steps:
       - uses: actions/checkout@v4
 
@@ -18,11 +24,34 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+
       - name: Build DNS filter
-        run: python3 build/build_dns.py
+        id: dns
+        run: python3 build/build_dns.py 2> dns-build.log | tee -a dns-build.log
 
       - name: Build ad filter
-        run: python3 build/build_ad.py
+        id: ad
+        run: python3 build/build_ad.py 2> ad-build.log | tee -a ad-build.log
+
+      - name: Job summary
+        run: |
+          {
+            echo "## Filter build"
+            echo ""
+            echo "### DNS"
+            grep -E '^(OK:|SUMMARY:|ERROR:)' dns-build.log || true
+            echo ""
+            echo "### Ad"
+            grep -E '^(OK:|SUMMARY:|ERROR:)' ad-build.log || true
+            echo ""
+            if git diff --quiet dns/filter.txt ad/filter.txt; then
+              echo "**Output changed:** no"
+            else
+              echo "**Output changed:** yes"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit and push if changed
         run: |
@@ -33,7 +62,7 @@ jobs:
             [ -f "$f" ] && git add "$f"
           done
           if git diff --staged --quiet; then
-            echo "No changes"
+            echo "No changes to commit"
             exit 0
           fi
           git commit -m "chore: rebuild merged dns and ad filters"

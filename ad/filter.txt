@@ -1,8 +1,11 @@
 ! Title: Personal merged ad filter
-! Description: 280blocker adblock + AdGuard Japanese filter Plus (deduplicated). Pair with built-in AdGuard #2,3,7,11,14,17 on iOS/PC.
+! Description: 280blocker adblock + AdGuard Japanese filter Plus (exact-match dedupe; @@ exceptions kept). Pair with built-in AdGuard #2,3,7,11,14,17 on iOS/PC.
 ! Homepage: https://github.com/baspis/my-filters
 ! License: See README (sources retain their own licenses)
-! Last modified: 2026-06-03 23:00 JST
+! Last modified: 2026-06-04 12:16 JST
+!
+! Source: 280blocker adblock (280blocker_adblock_202606.txt) - https://280blocker.net/files/280blocker_adblock_202606.txt
+! Source: AdGuard Japanese filter Plus - https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt
 !
 ##.blocker280-20260521
 ##.slot-insert:has(>a[href*="amzn.to/"])
@@ -1149,6 +1152,7 @@ douga-kanji.com##.first-view-wrap
 ||ak.itponytaa.com^
 ||ak.uncastnork.com^
 ||ak.stoorgel.com^
+||ocn-tag.sienca.jp^$domain=goo.ne.jp
 ||fanp.me^$domain=dandy-house.co.jp
 ||static.klaviyo.com^$domain=esrgear.jp|jackery.jp
 jav-fun.cc##.header-ad-mobile
@@ -1358,6 +1362,7 @@ player.javboys.cam##a[href]
 earthyworld.com##.adsbygoogle
 tenbaiquest.com,orenoraresne.com##ins[class*="adsbygoogle"]
 dream.jp##div[class*="adsense"]
+dream.jp##div[class*="Adsense"]
 mogupa.jp,buywrite.jp##div[class^="c-infoBar"]
 mogupa.jp,buywrite.jp###fourm_video_sp
 buywrite.jp##div[class*="dfad"]
@@ -3137,9 +3142,13 @@ kidsna.com##.line-share-button
 ||qa24ljic4i.com^$domain=nikaraw.com
 ||teefuthe.com^$domain=mangarawjp.com|mangarawjp.io
 ||sailorandmoist.com^$domain=play.cinemaflixs.xyz
+||highperformancedisplayformat.com^$domain=kmansin09.com
+||profitablegatetocontent.com^$domain=kmansin09.com|videeza.com
 ||lebinaphy.com^$domain=kmansin09.com
 ||querulous-type.com^$domain=kmansin09.com
 ||6glece4homah8dweracea.com^$domain=mangaraw.vip
+||profitablegatetocontent.com^$domain=twihub.me
+||highperformancedisplayformat.com^$domain=twihub.me
 ||regiancedrator.com^
 ||banquetunarmedgrater.com^
 ||interstitial-07.com^
@@ -3149,6 +3158,7 @@ kidsna.com##.line-share-button
 ||webmobiwatcher.com^
 ||tuleceti.com^
 ||ardslediana.com^
+||teefuthe.com^
 ||unswingfluvial.com^
 ||riverwidemusic.com^
 ||topvisitnow.com^
@@ -3499,6 +3509,7 @@ genius.com##[class*="InreadContainer__Container"]
 ||go6shde9nj2itle.com^$domain=tktube.com
 ||rrmon.adsbtrk.com^$domain=tktube.com
 ||fiercedental.com^$domain=master124.ru|sun-spain.ru
+||interstitial-08.com^$domain=wiki.ja-jp.nina.az
 ||propu.sh^$domain=wiki.ja-jp.nina.az
 ||dba9ytko5p72r.cloudfront.net^$domain=wiki.ja-jp.nina.az
 ||zikroarg.com^$domain=mangaraw.lol
@@ -3508,6 +3519,7 @@ genius.com##[class*="InreadContainer__Container"]
 ||adfpoint.com^
 ||agmermer.pro^
 ||uptimecdn.com^
+||waisheph.com^
 ||cuddlethehyena.com^
 ||xapi.juicyads.com^
 ||qualitydestructionhouse.com^
@@ -3539,7 +3551,10 @@ wetten.com##.sticky-footerbar--show
 ||quokkacheeks.com^$domain=mangagohan.me
 ||ticketswinning.com^$domain=javmix.tv|asianclub.tv
 ||belickitungchan.com^$domain=javmix.tv|asianclub.tv
+||poshhateful.com^$domain=javmix.tv|asianclub.tv
+||inrhyhorntor.com^$domain=javmix.tv|asianclub.tv|supjav.com
 ||outsliggooa.com^
+||upgulpinon.com^$domain=javmix.tv|asianclub.tv
 ||residenceseeingstanding.com^$domain=avgle.net
 ||play.hdvideosnet.com^$domain=avgle.net
 ||tempest.services.disqus.com^$domain=mangas-raw.com
@@ -4865,6 +4880,7 @@ ameblo.jp##div[style*="height:80vw"]
 ||newmayads.com
 ||seaofads.com
 ||onclicksuper.com^$third-party
+||ie8eamus.com^$third-party
 ||srv.clickfuse.com/showads/showad.js
 ||doubleclick.net^$domain=~cosme.net|~amazon.co.jp|~onlineshop.smt.docomo.ne.jp|~mydocomo.com|~ralphlauren.co.jp|~atwiki.jp|~bookoffonline.co.jp|~natgeo.nikkeibp.co.jp|~db-siken.com|~pm-siken.com|~sc-siken.com|~nw-siken.com|~itpassportsiken.com|~fe-siken.com|~ap-siken.com|~blogk.com|~tabkul.com|~rocketnews24.com|~gigaho.com|~lettuceclub.net|~toramemoblog.com|~mynavi.jp|~fp3-siken.com|~bi-girl.net|~youpouch.com|~xn--o39an51b2re.com|~jprime.jp|~kotobank.jp|~woman.excite.co.jp|~hapitas.jp|~mdpr.jp|~hhmanga.com|~fruitmail.net|~ib-game.jp
 ||doubleclick.com^
@@ -7544,6 +7560,7 @@ yahoo.co.jp###intrsttl
 yahoo.co.jp###newsBanner
 yahoo.co.jp###peronArea
 yahoo.co.jp###prem-ad
+yahoo.co.jp###rsab
 yahoo.co.jp###stcftw2a
 yahoo.co.jp###stcftw2a_2
 yahoo.co.jp###w2aBtn
@@ -8417,11 +8434,21 @@ avsagasu.com#$#.single_side > a { visibility: hidden !important; }
 *#$#ins.adsbygoogle[data-ad-slot] { width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important; }
 anianierosuki.work#%#//scriptlet('prevent-window-open')
 hentaicomic.*,wnacg1.cc,wnacg.*#%#//scriptlet("abort-current-inline-script", "document.write", "/\.(gif|php)/")
+@@||31012.jp/wp-content/uploads/2019/11/ad2.jpg
+@@||dmlab.jp/images/adtech/*$image,~third-party
+@@||houritsusoudan.biz/ad/image/$image,~third-party
+@@||g.doubleclick.net/pagead/ads?$subdocument,domain=sitappa.com
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=sitappa.com
+@@||pagead2.googlesyndication.com/pagead/managed/js/adsense/$script,domain=sitappa.com
+@@||point-g.rakuten.co.jp/pg_assets/item/contets/*_300_250_$image,~third-party
 anydebrid.com,colonist.io,downloads.descendant.me,ff14angler.com,hotdebrid.com,html5.gamedistribution.com,in-jpn.com,kantangame.com,kujimap.com,model-viewer.com,paraphraser.io,play.aidungeon.io,puzzle-ch.com,pvpoke-re.com,sekai-kabuka.com,tamrieltradecentre.com,teemo.gg,xtremestream.co,ytlarge.com#@$#ins.adsbygoogle[data-ad-client] { width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important; }
 anydebrid.com,colonist.io,downloads.descendant.me,ff14angler.com,hotdebrid.com,html5.gamedistribution.com,in-jpn.com,kantangame.com,kujimap.com,model-viewer.com,paraphraser.io,play.aidungeon.io,puzzle-ch.com,pvpoke-re.com,sekai-kabuka.com,tamrieltradecentre.com,teemo.gg,xtremestream.co,ytlarge.com#@$#ins.adsbygoogle[data-ad-slot] { width:1px!important;height:1px!important;min-width:1px!important;min-height:1px!important;margin:0!important;padding:0!important;overflow:hidden!important;opacity:0!important; }
 /\/wp-content\/uploads\/[a-z]{6,9}\.js(?:\?ver=[.0-9]+|,qver=[.0-9]+\.pagespeed\..+\.js)$/$script,~third-party
 /\/wp-content\/uploads\/[a-zA-Z]{12}\/[a-zA-Z]{12}\.js(?:\?ver=[.0-9]+|,qver=[.0-9]+\.pagespeed\..+\.js)$/$script,~third-party
 /^https:\/\/[0-9a-z]{7,25}\.com\/(?:build|bundles|chunks|dist|j|public|scripts|static)\/[0-9a-f]{6,15}\/?[0-9a-f]{21,36}(?:[-.](?:ma?in|prod|index))?(?:\.js)?$/$script,third-party,match-case,domain=~edu|~gov|~jp
+@@/ads-prebid.js$script,~third-party
+@@||ads.remix.es/advertisement.js|$script
+@@||g.adspeed.net/ad.php?do=detectadblocker|$script
 ||doubleclick.net/favicon.ico$image,redirect=32x32-transparent.png
 /player/stats.php?$image,~third-party,redirect-rule=1x1-transparent.gif
 /popunder_$script,redirect-rule=noopjs
@@ -8430,7 +8457,10 @@ pc-plaza.com#%#//scriptlet('abort-current-inline-script', 'jQuery', 'DHAntiAdBlo
 pc-plaza.com##.jconfirm
 tools.jabrek.net#%#//scriptlet('prevent-fetch', 'www3.doubleclick.net')
 zunda.site#$##ad_box { height: 50px !important; }
+@@.php?id=$script,domain=surirt.com
+@@||video.520cc.cc^$generichide
 jav777.xyz#%#//scriptlet('prevent-eval-if', 'ADS_BLOCKED')
+@@||afreecatv.com/asset/service/ad/check_ad.js$~third-party
 ||experience-ap.piano.io/xbuilder/experience/load?$script,redirect-rule=noopjs
 ||jsdelivr.net/npm/ad-compass@latest/dist/ad-compass.umd.js
 digiday.jp#%#//scriptlet('remove-attr', 'hidden', '[class^="piano-paywall"]', 'stay')

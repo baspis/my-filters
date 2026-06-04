@@ -7,67 +7,82 @@ import sys
 
 from common import (
     ROOT,
+    FilterMeta,
     Merger,
-    fetch,
+    MergeStats,
+    SourceSpec,
+    fetch_first_validated,
     fetch_with_cache,
+    log_source_summary,
     month_urls_utc,
-    parse_rules,
-    write_filter,
+    print_build_summary,
+    write_filter_atomic,
+    MIN_OUTPUT_RULES_AD,
 )
 
 OUTPUT = ROOT / "ad" / "filter.txt"
 BLOCKER_CACHE = ROOT / "sources" / "280blocker_ad.cache.txt"
 
-JPF_PLUS_URLS = [
-    (
+JPF_PLUS_CANDIDATES: list[SourceSpec] = [
+    SourceSpec(
         "AdGuard Japanese filter Plus",
         "https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt",
+        min_parsed_rules=50,
     ),
-    (
+    SourceSpec(
         "AdGuard Japanese filter Plus (GitHub raw)",
         "https://raw.githubusercontent.com/Yuki2718/adblock2/main/japanese/jpf-plus.txt",
+        min_parsed_rules=50,
     ),
 ]
 
-
-def fetch_first(urls: list[tuple[str, str]]) -> tuple[str, str]:
-    last_error: Exception | None = None
-    for name, url in urls:
-        try:
-            return name, fetch(url)
-        except Exception as exc:
-            print(f"WARN: {name} failed ({url}): {exc}", file=sys.stderr)
-            last_error = exc
-    raise RuntimeError("All URLs failed") from last_error
+BLOCKER_MIN_RULES = 100
 
 
-def merge() -> tuple[list[str], list[str]]:
+def merge() -> tuple[list[str], list[str], MergeStats, int]:
     merger = Merger()
+    sources = []
 
-    label, text = fetch_with_cache(
+    blocker = fetch_with_cache(
         "280blocker adblock",
         month_urls_utc("https://280blocker.net/files/280blocker_adblock"),
         BLOCKER_CACHE,
+        min_parsed_rules=BLOCKER_MIN_RULES,
+        keep_exceptions=True,
     )
-    merger.add(label, parse_rules(text))
+    log_source_summary(blocker)
+    sources.append(blocker)
+    merger.add_source(blocker)
 
-    name, text = fetch_first(JPF_PLUS_URLS)
-    merger.add(name, parse_rules(text))
+    jpf = fetch_first_validated(JPF_PLUS_CANDIDATES, keep_exceptions=True)
+    log_source_summary(jpf)
+    sources.append(jpf)
+    merger.add_source(jpf)
 
-    return merger.finish(), merger.log
+    rules = merger.rules
+    return rules, merger.log, MergeStats(sources=sources), merger.duplicates_removed
 
 
 def main() -> int:
     try:
-        rules, log = merge()
-        write_filter(
+        rules, log, stats, dupes = merge()
+        log.append(f"Duplicates removed (exact match): {dupes}")
+        log.append(f"Total rules: {len(rules)}")
+        result = write_filter_atomic(
             OUTPUT,
-            "Personal merged ad filter",
-            "280blocker adblock + AdGuard Japanese filter Plus (deduplicated). "
-            "Pair with built-in AdGuard #2,3,7,11,14,17 on iOS/PC.",
+            FilterMeta(
+                "Personal merged ad filter",
+                "280blocker adblock + AdGuard Japanese filter Plus "
+                "(exact-match dedupe; @@ exceptions kept). "
+                "Pair with built-in AdGuard #2,3,7,11,14,17 on iOS/PC.",
+            ),
             rules,
+            stats.sources,
             log,
+            min_output_rules=MIN_OUTPUT_RULES_AD,
         )
+        result.duplicates_removed = dupes
+        print_build_summary(result, duplicates_removed=dupes)
         return 0
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
