@@ -49,6 +49,13 @@ class TestParseRules(unittest.TestCase):
         self.assertEqual(kept, 1)
         self.assertEqual(dropped, 0)
 
+    def test_skips_hash_comments_and_bom_hash_comments(self) -> None:
+        rules, _, _ = parse_rules(
+            "\ufeff# title\n# comment\n||blocked.com^\n",
+            keep_exceptions=False,
+        )
+        self.assertEqual(rules, ["||blocked.com^"])
+
     def test_keeps_case_and_modifier_variants(self) -> None:
         rules, _, _ = parse_rules(self.SAMPLE, keep_exceptions=True)
         self.assertIn("||Example.COM^", rules)
@@ -65,6 +72,15 @@ class TestParseRules(unittest.TestCase):
         rules, kept, _ = parse_rules(self.SAMPLE, keep_exceptions=True)
         self.assertEqual(kept, 1)
         self.assertIn("@@||allow.example^", rules)
+
+    def test_rejects_preprocessor_when_requested(self) -> None:
+        with self.assertRaises(ValueError):
+            parse_rules(
+                "!#include module.txt\n||blocked.com^\n",
+                keep_exceptions=True,
+                reject_preprocessor=True,
+                source_name="test",
+            )
 
 
 class TestDnsOutputExclusions(unittest.TestCase):
@@ -181,6 +197,16 @@ class TestResponseValidation(unittest.TestCase):
                 source_name="x",
                 min_parsed_rules=5,
                 keep_exceptions=False,
+            )
+
+    def test_rejects_preprocessor_directive(self) -> None:
+        with self.assertRaises(ValueError):
+            validate_fetched_text(
+                "!#if adguard\n||only.com^\n",
+                source_name="x",
+                min_parsed_rules=1,
+                keep_exceptions=True,
+                reject_preprocessor=True,
             )
 
 

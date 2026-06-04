@@ -42,6 +42,7 @@ HTML_MARKERS = re.compile(
     r"^\s*(?:<!doctype\s+html|<html\b|<head\b|<body\b)",
     re.IGNORECASE,
 )
+PREPROCESSOR_DIRECTIVE = re.compile(r"^!#(?:include|if|endif)\b")
 
 REQUIRED_HEADER_KEYS = ("Title:", "Description:", "Homepage:", "License:", "Last modified:")
 
@@ -129,12 +130,18 @@ def validate_fetched_text(
     source_name: str,
     min_parsed_rules: int,
     keep_exceptions: bool,
+    reject_preprocessor: bool = False,
 ) -> int:
     if not text.strip():
         raise ValueError(f"{source_name}: empty response")
     if looks_like_html(text):
         raise ValueError(f"{source_name}: response looks like HTML")
-    rules, kept, dropped = parse_rules(text, keep_exceptions=keep_exceptions)
+    rules, kept, dropped = parse_rules(
+        text,
+        keep_exceptions=keep_exceptions,
+        reject_preprocessor=reject_preprocessor,
+        source_name=source_name,
+    )
     count = len(rules)
     if count < min_parsed_rules:
         raise ValueError(
@@ -148,14 +155,22 @@ def parse_rules(
     text: str,
     *,
     keep_exceptions: bool,
+    reject_preprocessor: bool = False,
+    source_name: str = "source",
 ) -> tuple[list[str], int, int]:
     """Return (rules, exceptions_kept, exceptions_dropped)."""
     rules: list[str] = []
     kept = 0
     dropped = 0
     for raw in text.splitlines():
-        line = normalize_line(raw)
-        if not line or line.startswith("!"):
+        line = normalize_line(raw).removeprefix("\ufeff")
+        if not line:
+            continue
+        if reject_preprocessor and PREPROCESSOR_DIRECTIVE.match(line):
+            raise ValueError(
+                f"{source_name}: unsupported preprocessor directive: {line}"
+            )
+        if line.startswith("!") or line.startswith("#"):
             continue
         if line.startswith("["):
             continue
@@ -295,16 +310,23 @@ def fetch_validated_source(
     spec: SourceSpec,
     *,
     keep_exceptions: bool,
+    reject_preprocessor: bool = False,
     opener: Callable[..., object] | None = None,
 ) -> ParsedSource:
     data = fetch_bytes(spec.url, opener=opener)
     text = decode_utf8_strict(data)
-    rules, kept, dropped = parse_rules(text, keep_exceptions=keep_exceptions)
+    rules, kept, dropped = parse_rules(
+        text,
+        keep_exceptions=keep_exceptions,
+        reject_preprocessor=reject_preprocessor,
+        source_name=spec.name,
+    )
     validate_fetched_text(
         text,
         source_name=spec.name,
         min_parsed_rules=spec.min_parsed_rules,
         keep_exceptions=keep_exceptions,
+        reject_preprocessor=reject_preprocessor,
     )
     return ParsedSource(
         name=spec.name,
@@ -326,6 +348,7 @@ def fetch_with_cache(
     *,
     min_parsed_rules: int,
     keep_exceptions: bool,
+    reject_preprocessor: bool = False,
     opener: Callable[..., object] | None = None,
 ) -> ParsedSource:
     last_error: Exception | None = None
@@ -338,10 +361,16 @@ def fetch_with_cache(
                 source_name=label,
                 min_parsed_rules=min_parsed_rules,
                 keep_exceptions=keep_exceptions,
+                reject_preprocessor=reject_preprocessor,
             )
             cache_path.parent.mkdir(parents=True, exist_ok=True)
             cache_path.write_bytes(data)
-            rules, kept, dropped = parse_rules(text, keep_exceptions=keep_exceptions)
+            rules, kept, dropped = parse_rules(
+                text,
+                keep_exceptions=keep_exceptions,
+                reject_preprocessor=reject_preprocessor,
+                source_name=label,
+            )
             adopted = f"{label} ({url.rsplit('/', 1)[-1]})"
             print(
                 f"OK: {label} url={url} bytes={len(data)} "
@@ -379,10 +408,16 @@ def fetch_with_cache(
                 source_name=f"{label} (cache)",
                 min_parsed_rules=min_parsed_rules,
                 keep_exceptions=keep_exceptions,
+                reject_preprocessor=reject_preprocessor,
             )
         except ValueError as exc:
             raise RuntimeError(f"{label}: cache invalid ({exc})") from exc
-        rules, kept, dropped = parse_rules(text, keep_exceptions=keep_exceptions)
+        rules, kept, dropped = parse_rules(
+            text,
+            keep_exceptions=keep_exceptions,
+            reject_preprocessor=reject_preprocessor,
+            source_name=f"{label} (cache)",
+        )
         adopted = f"{label} (cached {cache_path.name})"
         print(
             f"OK: {label} url=cache:{cache_path.name} bytes={len(data)} "
@@ -408,13 +443,17 @@ def fetch_first_validated(
     candidates: list[SourceSpec],
     *,
     keep_exceptions: bool,
+    reject_preprocessor: bool = False,
     opener: Callable[..., object] | None = None,
 ) -> ParsedSource:
     last_error: Exception | None = None
     for spec in candidates:
         try:
             return fetch_validated_source(
-                spec, keep_exceptions=keep_exceptions, opener=opener
+                spec,
+                keep_exceptions=keep_exceptions,
+                reject_preprocessor=reject_preprocessor,
+                opener=opener,
             )
         except Exception as exc:
             print(f"WARN: {spec.name} failed ({spec.url}): {exc}", file=sys.stderr)

@@ -1,6 +1,6 @@
 # my-filters
 
-Personal merged blocklists for AdGuard: one DNS list and one browser ad supplement. Rules are rebuilt from upstream sources; semantics are preserved with exact-match deduplication only.
+Personal blocklists for AdGuard: one merged DNS list and one browser ad supplement. Rules are rebuilt from upstream sources; semantics are preserved with exact-match deduplication only.
 
 **Personal use only.** Source lists keep their own licenses and redistribution terms; see [Licenses and attribution](#licenses-and-attribution).
 
@@ -9,20 +9,21 @@ Personal merged blocklists for AdGuard: one DNS list and one browser ad suppleme
 | | DNS (`dns/filter.txt`) | Ad (`ad/filter.txt`) |
 |---|---|---|
 | Use in | AdGuard DNS / DNS filtering | AdGuard for iOS, Safari, browser extension |
-| Role | Merged DNS block rules | **Supplement** only (does not replace built-in lists) |
+| Role | Merged DNS block rules | **280blocker supplement** only (does not replace built-in lists) |
 | `@@` exceptions | **Excluded** (block-only collection) | **Kept** (full list semantics where upstream provides them) |
 | Dedup | Exact line match after trim | Same |
 
-Subscribe URLs (unchanged):
+Subscribe URLs:
 
 ```text
 https://raw.githubusercontent.com/baspis/my-filters/main/dns/filter.txt
 https://raw.githubusercontent.com/baspis/my-filters/main/ad/filter.txt
+https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt
 ```
 
 ### AdGuard built-in filters (enable separately)
 
-`ad/filter.txt` does **not** include AdGuard built-in filters. Also enable **#2, #3, #7, #11, #14, #17** (Base, Tracking, Japanese, Mobile ads, Annoyances, URL Tracking) in the app.
+`ad/filter.txt` does **not** include AdGuard built-in filters or Yuki Plus. Also enable **#2, #3, #7, #11, #14, #17** (Base, Tracking, Japanese, Mobile ads, Annoyances, URL Tracking) and subscribe to Yuki Plus separately.
 
 ## Upstream sources (full URLs)
 
@@ -39,7 +40,8 @@ https://raw.githubusercontent.com/baspis/my-filters/main/ad/filter.txt
 | Source | URL |
 |---|---|
 | 280blocker adblock | `https://280blocker.net/files/280blocker_adblock_YYYYMM.txt` (UTC month) |
-| AdGuard Japanese filter Plus | `https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt` (fallback: `https://raw.githubusercontent.com/Yuki2718/adblock2/main/japanese/jpf-plus.txt`) |
+
+Subscribe to [AdGuard Japanese filter Plus](https://yuki2718.github.io/adblock2/japanese/jpf-plus.txt) directly. This repo does not flatten it into `ad/filter.txt` because it uses preprocessor directives such as `!#include`, `!#if`, and `!#endif`.
 
 Upstream lists are **not** pinned to git SHAs; this repo tracks current lists on a schedule. Reproducibility uses git history, build logs, cache files under `sources/`, and `! Source:` lines in each output file.
 
@@ -55,7 +57,8 @@ Invalid or empty responses are not written to cache. If all URLs fail and cache 
 
 - **Dedup:** Only identical lines (after stripping leading/trailing whitespace) are removed. Different modifiers, paths, or letter case are kept. First occurrence wins.
 - **DNS `@@` rules:** Dropped by design; count is logged. They must not silently disappear without documentation—see table above.
-- **Ad `@@` rules:** Kept. They may disable blocking from another merged source; use only if you accept that trade-off.
+- **Ad `@@` rules:** Kept if the current upstream provides them.
+- **Ad preprocessor directives:** `!#include`, `!#if`, and `!#endif` cause the build to fail instead of being silently stripped.
 - **Fetch:** Timeouts, limited retries with backoff for timeouts, connection errors, HTTP 429, and 5xx. No retry on 403/404 for the same URL.
 - **Validation:** Non-empty UTF-8 text, not HTML, no NUL/binary; per-source minimum rule counts; merged output minimums; optional drop guard vs previous publish (see `build/common.py`).
 - **Failure:** Required sources must succeed; incomplete filters are not published; existing `dns/filter.txt` / `ad/filter.txt` are left unchanged on failure (atomic write to temp, then replace).
@@ -98,6 +101,6 @@ BUILD_ALLOW_RULE_DROP=1 python3 build/build_dns.py
 | [AdGuard DNS filter](https://github.com/AdguardTeam/AdguardFilters) | GPL-3.0 (filter `#15` in [AdguardFilters](https://github.com/AdguardTeam/AdguardFilters)) |
 | [HaGeZi DNS blocklists](https://github.com/hagezi/dns-blocklists) | See repository `LICENSE` / readme |
 | [280blocker](https://280blocker.net/) | See site terms |
-| [AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2) | See repository license |
+| [AdGuard Japanese filter Plus](https://github.com/Yuki2718/adblock2) | Direct subscription recommended; see repository license |
 
 Generated files include `! Source:` lines with the URL or cache label actually used. This repo’s README does not replace upstream license notices.

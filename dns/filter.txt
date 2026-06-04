@@ -2,11 +2,11 @@
 ! Description: AdGuard #15 + HaGeZi Multi PRO + 280blocker domain_ag (exact-match dedupe; @@ exceptions excluded)
 ! Homepage: https://github.com/baspis/my-filters
 ! License: See README (sources retain their own licenses)
-! Last modified: 2026-06-04 17:01 JST
+! Last modified: 2026-06-04 18:59 JST
 !
 ! Source: AdGuard DNS filter (#15) - https://filters.adtidy.org/extension/chromium/filters/15.txt
 ! Source: HaGeZi Multi PRO - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
-! Source: 280blocker domain_ag (cached 280blocker_dns.cache.txt) - /home/runner/work/my-filters/my-filters/sources/280blocker_dns.cache.txt
+! Source: 280blocker domain_ag (280blocker_domain_ag_202606.txt) - https://280blocker.net/files/280blocker_domain_ag_202606.txt
 !
 ||aboveboardcomplicate.com^
 ||as-pet.ams3.cdn.digitaloceanspaces.com^
@@ -15781,6 +15781,7 @@ vkcdnservice.appspot.com^
 ||dfaqwqlnsrs.com^
 ||dfb24776dd.com^
 ||dfbmfxfovn.com^
+||dfbvgrxdrsaiv.com^
 ||dfcthngzpxiwc.site^
 ||dfcvcbrr.com^
 ||dfdgfruitie.xyz^
@@ -16679,6 +16680,7 @@ vkcdnservice.appspot.com^
 ||dsa8h7.com^
 ||dsadghrthysdfadwr3sdffsdaghedsa2gf.xyz^
 ||dsadyttmalqac.website^
+||dsajrx.com^
 ||dsamfe.com^
 ||dsb68d.com^
 ||dsbcks.com^
@@ -25539,6 +25541,7 @@ vkcdnservice.appspot.com^
 ||jravekvyeyovb.top^
 ||jravekvyeyyvq.top^
 ||jrbbavbvqmbaz.top^
+||jreanjvuvpmy.in^
 ||jrhyfymjbdaap.com^
 ||jrjexx.com^
 ||jrkihvllezsla.space^
@@ -28961,6 +28964,7 @@ vkcdnservice.appspot.com^
 ||melodramaticquery.com^
 ||melongatesdexterity.com^
 ||melonryrummily.qpon^
+||meltageclingsteuch.cfd^
 ||meltonosse.qpon^
 ||memberfoiblediplois.qpon^
 ||membersjanapa.qpon^
@@ -30566,6 +30570,7 @@ vkcdnservice.appspot.com^
 ||neighrewarn.click^
 ||neilhoticapwz.space^
 ||nekuvkemfyhbq.com^
+||nekuxb8nnk8gtxqxn6b2rbynuy.cfd^
 ||neladyhe.com^
 ||nelhon.com^
 ||nellads.com^
@@ -35247,6 +35252,7 @@ vkcdnservice.appspot.com^
 ||probplanted.qpon^
 ||probtn.com^
 ||proceduredisrespect.com^
+||procedures4096.com^
 ||proceduresinfox.net^
 ||proceedingcredulous.com^
 ||proceedvulnerable.com^
@@ -37041,6 +37047,7 @@ vkcdnservice.appspot.com^
 ||raisedtributeefficacious.com^
 ||raisingpeppermint.com^
 ||raisqahsubhte.space^
+||rajeezwhksdfl.site^
 ||rajgpmrlvpdde.space^
 ||rajjkaobnt.in^
 ||rakelyashrafi.cfd^
@@ -45550,6 +45557,7 @@ vkcdnservice.appspot.com^
 ||ucseqcnkyoxw.com^
 ||ucsnddigmtwoe.space^
 ||uctioyjljk.com^
+||ucufiewsorygs.com^
 ||ucukokdokjydj.space^
 ||ucuqtxhmdgvfr.website^
 ||ucuumhsxenzwq.online^
@@ -48134,6 +48142,7 @@ vkcdnservice.appspot.com^
 ||vsimyppptdxdo.site^
 ||vskfhfqsvurqy.online^
 ||vslfbotg.com^
+||vslnphbyuqbkz.site^
 ||vslpnvutywvnb.space^
 ||vsofglbfeiewy.site^
 ||vsqczzvkhzphx.site^
@@ -52548,6 +52557,7 @@ vkcdnservice.appspot.com^
 ||yflyakduhkqon.com^
 ||yfmcrkrhvmdij.website^
 ||yfntnqdine.com^
+||yfowxwcszhsqr.online^
 ||yfqrdeewqnwvy.net^
 ||yfqtpyfxcfbyq.online^
 ||yfqwiktzzrcrq.site^
@@ -147485,8 +147495,6 @@ dlsdk.appsflyer.com^
 ||yazizim.com^
 ||zohar-trends.com^
 ||zoharajewels.com^
-# title: Frellwit's Swedish Hosts File
-# homepage: https://github.com/lassekongo83/Frellwits-filter-lists/
 ||a.zxcvads.com^
 ||ab.fastighetsvarlden.se^
 ||addrevenue.io^
@@ -275592,16 +275600,6 @@ analytics-*.aasaam.com
 ||zzzmyl.com^
 ||zzzperform.com^
 ||zzzzfzgzbz.com^
-﻿# 280blocker domain filter（AdGuard_format)
-#
-# Homepage: https://280blocker.net
-# Copyright :280blocker
-# This file is only permitted for personal use under copyright law of Japan
-# Commercial use or redistribution are prohibited except as permitted by copyright law of Japan
-# It's created for Japanese user of domain block.
-# Subdomain is not described.
-# Please use it in a system that can block subdomains.
-# Lastupdate: 2026-05-21
 ||domain.dummy280280.net^
 ||check.dummy280280.net^
 ||100651.advision-adnw.jp^
@@ -277463,26 +277461,3 @@ analytics-*.aasaam.com
 ||ib.semaisetything.com^
 ||xr.staxisclivias.com^
 ||ads.bakusai.com^
-# ||googleadservices.com^
-# ||trafficgate.net^
-# ||nakanohito.jp^
-# ||app.adjust.com^
-# ||affiliate.rakuten.co.jp^
-# ||fancrew.jp^
-# ||trj.valuecommerce.com^
-# ||omks.valuecommerce.com^
-# ||aplkp.valuecommerce.com^
-# ||aml.valuecommerce.com^
-# ||adpresso.valuecommerce.com^
-# ||ad.valuecommerce.com^
-# ||ad.jp.ap.valuecommerce.com^
-# ||ad.hatena.ne.jp^
-# ||j-a-net.jp^
-# ||ad.dmm.com^
-# ||banner.cybershop-affiliate.jp^
-# ||link-a.net^
-# ||linkshare.com^
-# ||linkshare.ne.jp^
-# ||cnt.affiliate.fc2.com^
-# ||af-110.com^
-# ||af.moshimo.com^
