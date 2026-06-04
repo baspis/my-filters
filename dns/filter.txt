@@ -2,11 +2,11 @@
 ! Description: AdGuard #15 + HaGeZi Multi PRO + 280blocker domain_ag (exact-match dedupe; @@ exceptions excluded)
 ! Homepage: https://github.com/baspis/my-filters
 ! License: See README (sources retain their own licenses)
-! Last modified: 2026-06-04 12:41 JST
+! Last modified: 2026-06-04 17:01 JST
 !
-! Source: AdGuard DNS filter (#15, AdGuardSDNSFilter mirror) - https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+! Source: AdGuard DNS filter (#15) - https://filters.adtidy.org/extension/chromium/filters/15.txt
 ! Source: HaGeZi Multi PRO - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
-! Source: 280blocker domain_ag (280blocker_domain_ag_202606.txt) - https://280blocker.net/files/280blocker_domain_ag_202606.txt
+! Source: 280blocker domain_ag (cached 280blocker_dns.cache.txt) - /home/runner/work/my-filters/my-filters/sources/280blocker_dns.cache.txt
 !
 ||aboveboardcomplicate.com^
 ||as-pet.ams3.cdn.digitaloceanspaces.com^
@@ -879,7 +879,6 @@
 /^142\.91\.159\.(1[5-9]\d|2[0-4]\d|250):(80|443)$/
 ||188.72.219.36^
 ||stripe.rs-1028-a.com^
-||hub.fghtem.com^
 ||samsungtvads.com^
 ||midnightlotusgrove.com^
 ||1.bocyotkp5rbm9pui.cyou^
@@ -6468,7 +6467,6 @@
 ||widget.tippebannere.no^
 ||adc.interia.pl^
 ||pl.ua^$badfilter
-||linksprf.com^$badfilter
 ||c2c24.pl^
 ||cdn.gallery^
 wykop.pl$badfilter
@@ -6634,6 +6632,7 @@ vkcdnservice.appspot.com^
 ||10sn95to9.de^
 ||11004potential.net^
 ||110outambitious.net^
+||1111runtime.com^
 ||111rexor.com^
 ||1193d6426d.com^
 ||119dbc9238.com^
@@ -12534,6 +12533,7 @@ vkcdnservice.appspot.com^
 ||bypasspickupfaculty.com^
 ||bypihpjwurkhvi.com^
 ||byqxpmummjet.com^
+||byr2xgh4bkzbkwfy.rest^
 ||byrlawaeratedtensile.qpon^
 ||byrniessilky.com^
 ||byrristrowed.cfd^
@@ -13085,6 +13085,7 @@ vkcdnservice.appspot.com^
 ||cedecancontemporary.com^
 ||cedeimprovise.com^
 ||cedensmedusalphulwa.cfd^
+||cedisetagre.cyou^
 ||cee332cc1f.com^
 ||ceerrvzdgucqs.online^
 ||cefazaaycjdqi.store^
@@ -14125,6 +14126,7 @@ vkcdnservice.appspot.com^
 ||conestreshow.com^
 ||conferenceturkeybooking.com^
 ||confessinvaluable.com^
+||confideabigeus.cyou^
 ||confideclassifiedtimer.com^
 ||confidentialitydefensetshirt.com^
 ||confinecloakroomnew.com^
@@ -17833,6 +17835,7 @@ vkcdnservice.appspot.com^
 ||englandfaithless.com^
 ||engleflapper.shop^
 ||engloomsitups.shop^
+||englutehelicaltychite.qpon^
 ||englynburnfaailk.cyou^
 ||engrievinebef.fun^
 ||engxwphiclduq.site^
@@ -19781,6 +19784,7 @@ vkcdnservice.appspot.com^
 ||forscprts.com^
 ||forseenpalsiespalmira.cyou^
 ||forthbootyintricate.com^
+||forthbycity.com^
 ||forthcomingmugged.com^
 ||forthgoaix.com^
 ||forthright-photo.com^
@@ -19808,6 +19812,7 @@ vkcdnservice.appspot.com^
 ||fosfrgpcqy.com^
 ||fossealible.cfd^
 ||fosvicfniswpan.com^
+||fotherlamely.cyou^
 ||fotmrrwfgprar.fun^
 ||fotwupmfmlace.space^
 ||fouettbrauna.com^
@@ -22151,6 +22156,7 @@ vkcdnservice.appspot.com^
 ||haydntaal.com^
 ||hayfetidterminal.com^
 ||hayseedamitie.qpon^
+||hazellytopical.cyou^
 ||hazelmarks.com^
 ||hazelstrictlyheadless.com^
 ||hazesimps.cyou^
@@ -26283,6 +26289,7 @@ vkcdnservice.appspot.com^
 ||kirkborazon.com^
 ||kirmewribbingjaspoid.cyou^
 ||kirujh.com^
+||kisaengboultel.cfd^
 ||kishkadirndls.qpon^
 ||kislevkowtows.com^
 ||kissbaketurpentine.com^
@@ -26587,6 +26594,7 @@ vkcdnservice.appspot.com^
 ||kpwvntvpoksyw.website^
 ||kqaqdwukbmi.com^
 ||kqauptdrdiyyp.space^
+||kqawipdwetqqd.space^
 ||kqbcfyntxjdok.online^
 ||kqdujcth.com^
 ||kqejazglxkwta.space^
@@ -28219,6 +28227,7 @@ vkcdnservice.appspot.com^
 ||lunchoffended.com^
 ||lunlllxfmkvxr.site^
 ||lunlyqvavjkfc.website^
+||luntsdodgesalumin.cyou^
 ||lunulaehornist.com^
 ||lunygdgezgtnh.site^
 ||luoqdtopebadx.store^
@@ -28324,6 +28333,7 @@ vkcdnservice.appspot.com^
 ||lxbwquyuoovrx.space^
 ||lxfiflqhawqzr.space^
 ||lxfzavyfqjv.com^
+||lxgnfvnuagkua.website^
 ||lxhwfufvlksxl.site^
 ||lxisvvxfdqozy.site^
 ||lxjhcvabfkjuo.space^
@@ -28804,6 +28814,7 @@ vkcdnservice.appspot.com^
 ||mbvlmz.com^
 ||mbvndisplay.site^
 ||mbvsm.com^
+||mbvubhvcfcjju.space^
 ||mc7clurd09pla4nrtat7ion.com^
 ||mccjlrprhoodn.website^
 ||mcegpoujeecux.online^
@@ -28952,6 +28963,7 @@ vkcdnservice.appspot.com^
 ||melonryrummily.qpon^
 ||meltonosse.qpon^
 ||memberfoiblediplois.qpon^
+||membersjanapa.qpon^
 ||memfuqtsmlmyl.site^
 ||memgmknqdaycy.space^
 ||memia.xyz^
@@ -34886,6 +34898,7 @@ vkcdnservice.appspot.com^
 ||pphieftkuwccw.site^
 ||ppkafjqvlvawu.space^
 ||ppkhkibjokegn.online^
+||pplvsszskf.com^
 ||pplwjjpkrxcqm.site^
 ||pplyysxvlpvnv.site^
 ||ppmxp.com^
@@ -35688,6 +35701,7 @@ vkcdnservice.appspot.com^
 ||punlesscasuals.qpon^
 ||punneryirrs.qpon^
 ||punniccarestflings.qpon^
+||punnierzealots.shop^
 ||punningcaballo.shop^
 ||punoocke.com^
 ||punosy.com^
@@ -36102,6 +36116,7 @@ vkcdnservice.appspot.com^
 ||qcmlcwymvatsn.site^
 ||qcnpyyughyluz.online^
 ||qcnragymlulzk.website^
+||qcnwnixyxaxcy.online^
 ||qcoirrkdtkwck.site^
 ||qcpetfchlofox.site^
 ||qcqfkzglgynfr.site^
@@ -36500,6 +36515,7 @@ vkcdnservice.appspot.com^
 ||qqeadugfccgya.space^
 ||qqeamubuikcai.site^
 ||qqfksaamrtzvl.site^
+||qqfzedopftitm.website^
 ||qqglxofnwxa.com^
 ||qqhjdsbubacon.online^
 ||qqhuwthhmxeuc.space^
@@ -36992,6 +37008,7 @@ vkcdnservice.appspot.com^
 ||raewqamkmzbej.fun^
 ||rafekunbi.com^
 ||raffleprotectionbow.com^
+||raffomfha.com^
 ||rafikfangas.com^
 ||rafterlackersmaunche.cfd^
 ||ragapa.com^
@@ -40677,6 +40694,7 @@ vkcdnservice.appspot.com^
 ||siqsxgyvwhvtw.site^
 ||sirdushi.xyz^
 ||sireimplement.com^
+||sirenecoalite.cfd^
 ||siretarreswhisson.cyou^
 ||sireundermineoperative.com^
 ||sirgyzvvvnpyw.space^
@@ -44117,6 +44135,7 @@ vkcdnservice.appspot.com^
 ||tl8wmm46yqhyiunbq4egwzkutfmpw.rest^
 ||tlacobrerd.cyou^
 ||tlaphudlxurdlbe.com^
+||tlawfknxxcgay.space^
 ||tlcfhttbxdbhc.site^
 ||tlcpkidysoqqf.space^
 ||tlcpvkkboxamm.website^
@@ -46140,6 +46159,7 @@ vkcdnservice.appspot.com^
 ||unifini.de^
 ||uniform-development.pro^
 ||uniformwidgie.cfd^
+||unildldftytap.space^
 ||uniondistinction.com^
 ||unionshypnale.qpon^
 ||unique-memory.com^
@@ -46159,6 +46179,7 @@ vkcdnservice.appspot.com^
 ||univiedshlocks.cyou^
 ||unjdrgqjbvgaf.online^
 ||unjeuwxubehqk.space^
+||unjiqfer.com^
 ||unjustsubmerge.com^
 ||unjvgiee67hz5nz.rest^
 ||unkefcmhoyycz.online^
@@ -52058,6 +52079,7 @@ vkcdnservice.appspot.com^
 ||xycyblnwl.net^
 ||xycycwtdnmhex.website^
 ||xyefaumnllhxc.online^
+||xyehuxebfw.com^
 ||xyenjlakmjerq.website^
 ||xyeusoorgvjnf.online^
 ||xyftcxtrmbzrm.website^
@@ -53007,6 +53029,7 @@ vkcdnservice.appspot.com^
 ||young-expert.pro^
 ||young-freedom.com^
 ||youngfun.pro^
+||youngrecover.pro^
 ||youngsilly.pro^
 ||youngstermansionphrase.com^
 ||youngstreet.pro^
@@ -59203,8 +59226,6 @@ vkcdnservice.appspot.com^
 ||yandexadexchange.net^
 ||yc-ads.s3.amazonaws.com^
 ||youmi.net^
-||deloton.com$important
-||oclasrv.com$important
 ||n152adserv.com^
 ||smilered.com^
 ||mon.snssdk.com^
@@ -136238,7 +136259,6 @@ vkcdnservice.appspot.com^
 ||d1udjti6mtxz9q.cloudfront.net^
 ||countly.
 ||countly-
-||incoming.telemetry.mozilla.org^
 |piwik.
 ||stats.peachify.top^
 ||stats.index.hr^
@@ -141095,6 +141115,7 @@ dlsdk.appsflyer.com^
 ||pixel.blivenyc.com^
 ||pixel.embed.su^
 ||pixel.fohr.co^
+||pixel.marqo-ep.ai^
 ||pixel.mtrcs.samba.tv^
 ||pixel.newscred.com^
 ||pixel.pub.lilyai.net^
@@ -146162,7 +146183,6 @@ dlsdk.appsflyer.com^
 ||62.76.25.27^
 ||62.76.25.28^
 ||45.82.68.79^
-||adbetnet.com^
 ||kinogo-may.vipapi.org^
 ||ad.cub.red^
 ||exad.smi2.ru^
@@ -147300,8 +147320,6 @@ dlsdk.appsflyer.com^
 ||zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqp.de^
 ||avault.net^
 ||recognified.net^
-# This lists only contains domains which are used for ads, tracking or popups. it does not block in-HTML elements.
-# For use, simply copy paste this into your computers' HOSTS file. See https://en.wikipedia.org/wiki/Hosts_(file)#Location_in_the_file_system
 ||1kdailyprofit.co^
 ||3dfuckdoll.com^
 ||a.walla.co.il^
@@ -147467,13 +147485,8 @@ dlsdk.appsflyer.com^
 ||yazizim.com^
 ||zohar-trends.com^
 ||zoharajewels.com^
-# A hosts file that aims to get rid of ads, tracking, scams & badware on (mostly) Swedish websites
-# ----
-# title:          Frellwit's Swedish Hosts File
-# last updated:   2026-06-01 10:43:37 CEST
-# entries:        1152
-# format:         hosts (hosts -- in hosts file format)
-# homepage:       https://github.com/lassekongo83/Frellwits-filter-lists/
+# title: Frellwit's Swedish Hosts File
+# homepage: https://github.com/lassekongo83/Frellwits-filter-lists/
 ||a.zxcvads.com^
 ||ab.fastighetsvarlden.se^
 ||addrevenue.io^
@@ -159752,7 +159765,6 @@ dlsdk.appsflyer.com^
 ||hdapp1003-a.akamaihd.net^
 ||hdapp1008-a.akamaihd.net^
 ||hdsrc-a.akamaihd.net^
-# >> A <<
 ||scripts-ads.s3.ir-thr-at1.arvanstorage.com^
 ||error-tracking.arvancloud.com^
 ||analytics.aasaam.com^
@@ -159767,15 +159779,12 @@ analytics-*.aasaam.com
 ||adsima.net^
 ||adtrace.io^
 ||adtrace.ir^
-# https://twitter.com/Nikolaona/status/1699167838697652322
 ||adtrace.world^
 ||affili.ir^
 ||ayyaar.ir^
-# ^ Used by irna.ir
 ||adro.ir^
 ||affstat.digikala.com^
 ||affiliate.digikala.com^
-# >> B <<
 ||bitad.ir^
 ||binoads.ir^
 ||bl9.ir^
@@ -159785,15 +159794,12 @@ analytics-*.aasaam.com
 ||behinava.com^
 ||radar.bayan.ir^
 ||backority.ir^
-# >> C <<
 ||cayot.ir^
-# Example: tamasha.com/v/DDlMB
 ||chavosh.org^
 ||clickaval.com^
 ||chabok.io^
 ||congoro.com^
 ||congoro.ir^
-# >> D <<
 ||dezhino.com^
 ||daartads.com^
 ||daneshin.ir^
@@ -159803,77 +159809,50 @@ analytics-*.aasaam.com
 ||deemanetwork.com^
 ||deema.agency^
 ||deemaagency.ir^
-# https://forum.adguard.com/index.php?threads/vigiato-net-resolved.44366/
-# https://github.com/AdguardTeam/AdguardFilters/issues/79983
 ||click.digiato.com^
-# ^ Used by Digiato, Vigiato, Rooziato
-# >> E <<
-# >> F <<
 ||facepop.org^
 ||farsbux.ir^
 ||fastclick.ir^
 ||farakav.com^
-#  TODO: Check for breakages (used by tamasha.com), investigate into more tracking
-# >> G <<
-# >> H <<
 ||sentry.hamravesh.com^
-# Example: behtarino.com
 ||notifhub.com^
-# Example: androidha.com
 ||hantana.org^
-# >> I <<
 ||intrack.ir^
 ||geoip.imber.live^
-# >> J <<
 ||jetbux.ir^
-# >> K <<
 ||api.karpishe.com^
-# Example: asrakhbar.com
 ||kajads.com^
 ||ads.karzar.net^
-# >> L <<
 ||analytics.labbayk.ir^
 ||linkfars.com^
 ||landyab.com^
 ||linksaz.net^
 ||linkyar.com^
-# >> M <<
 ||ir.mihanstore.net^
-# Example: uploadgoogle.com
 ||metrix.ir^
-# ^ Used by digikala.com
 ||mediaad.org^
 ||magnetadservices.com^
 ||merita.ir^
 ||mitrarank.ir^
-# >> N <<
 ||analytics.nastooh.ir^
-# Example: sahebkhabar.ir
 ||newswidget.net^
 ||vidomusic.org^
 ||pantatec.ae^
 ||najva.com^
 ||netbina.com^
-# >> O <<
 ||oscaranimation.in^
-# >> P <<
 ||perlika.com^
 ||pelikan-network.ir^
 ||pegah.tech^
 ||pushq.ir^
 ||pooye-ads.com^
 ||promizer.com^
-# ^ Example: eghtesadonline.com
 ||phonroid.com^
-# ^ Example: par30games.net
 ||popina.ir^
 ||popunder.ir^
-# TODO: Remove it, Used by marzfun.com
 ||popupdl.ir^
-#  TODO: Remove it, Used by dlfox.com
 ||popland.info^
 ||peyvandha.ir^
-# ^ Example: imovie-dl.org
 ||phoenixad.io^
 ||partclick.ir^
 ||persianrank.ir^
@@ -159881,40 +159860,26 @@ analytics-*.aasaam.com
 ||popupme.net^
 ||pushe.co^
 ||publica.ir^
-# >> Q <<
-# >> R <<
 ||rankirani.ir^
 ||rssbank.ir^
-# >> S <<
-# power-music.ir, skmusic.ir, music-week.ir
 ||spotyfile.com^
 ||spellpop.ir^
 ||spellads.com^
 ||offers.sapra.ir^
-# Example: gapfilm.ir
 ||statsfa.com^
 ||sendword.ir^
-# Used by i-video.ir
 ||sanjagh.net^
 ||ads.safarme.ir^
-# ^ Used by kojaro.com
 ||sabaidea.cloud^
-# >> T <<
 ||trustseal.e-rasaneh.ir^
-# Example: anaj.ir
 ||triboon.net^
 ||te1.ir^
 ||talapop.ir^
 ||tabligheirani.ir^
 ||tbli.ir^
-# tavoos.net
-# ^ Example: film.tebyan.net
-# OISD maintainer: If a domain is used for ads, but also is required for "wanted content" (like video playback) it should not be blocked by domain/hosts lists. But rather left to handle by content blockers instead. (uBlock Origin, etc).
 ||cashback.takhfifan.com^
-# TODO: Investigate
 ||toppopup.com^
 ||counter.toolsir.com^
-# https://github.com/MasterKia/PersianBlocker/issues/210
 ||ads.aftab.cc^
 ||analytics.asiatech.ir^
 ||ads.asset.aparat.com^
@@ -159939,7 +159904,6 @@ analytics-*.aasaam.com
 ||sentry.fidibo.net^
 ||vast.filmnet.ir^
 ||sentry.filmnet.ir^
-# https://github.com/MasterKia/PersianBlocker/issues/107
 ||analytics.football360.ir^
 ||sentry.footballiapp.com^
 ||analysis.faradars.org^
@@ -159954,13 +159918,9 @@ analytics-*.aasaam.com
 ||tracker.jabama.com^
 ||logapi.karbord.io^
 ||kar-sentry.karnameh.com^
-# https://github.com/MasterKia/PersianBlocker/issues/101
 ||websocket.khanefootball.com^
-# Referral links disguised as movie download links
-# https://mediawach. com/introducing-telegram-app-for-mobile-standard-and-premium-versions/
 ||mediawach.com^
 ||sentry.mci.dev^
-# On zarebin.ir
 ||counter.musicsweb.ir^
 ||counter.mahanmusic.net^
 ||analytic.magland.ir^
@@ -159969,152 +159929,82 @@ analytics-*.aasaam.com
 ||sentry.namava.ir^
 ||ws.namava.ir^
 ||stc.ninisite.com^
-# https://github.com/MasterKia/PersianBlocker/issues/93
 ||websocket.55online.news^
 ||analytics.plaza.ir^
 ||sentry.querastaff.ir^
 ||a.reymit.ir^
-# sheypoor.com
 ||sentry.mielse.com^
 ||ingest-data-afra.snappfood.dev^
 ||errortracking.snapp.site^
-# https://github.com/MasterKia/PersianBlocker/issues/125
 ||websocket.sobhtazeh.news^
 ||linkdoni.soft98.ir^
 ||ad.technews-iran.com^
 ||adengine.telewebion.com^
 ||analytics.telewebion.com^
 ||hadeseh.simra.cloud^
-# >> U <<
-# >> V <<
-# https://github.com/MasterKia/PersianBlocker/issues/219
 ||analytics.jeldnews.com^
 ||sentry.virgool.io^
 ||countly.virgool.io^
-# https://github.com/MasterKia/PersianBlocker/issues/121
 ||websocket.varandaz.com^
 ||news-view-api.varzesh3.com^
 ||video-view-api.varzesh3.com^
-# >> W <<
-# >> X <<
-# >> Y <<
-# >> Z <<
-# https://webamoozcom.github.io/warning-list/
-# Discussion?
 ||excoino.com^
 ||irancloudmining.com^
 ||axotrade.com^
-# آمیتیس?
-# https://github.com/Webamoozcom/warning-list/discussions/41
-# What domain?
-# https://github.com/Webamoozcom/warning-list/discussions/127
-# https://github.com/Webamoozcom/warning-list/discussions/131
-# https://github.com/Webamoozcom/warning-list/discussions/12
 ||yoozbit.com^
-# https://github.com/Webamoozcom/warning-list/discussions/17
 ||nokontoken.com^
-# https://github.com/Webamoozcom/warning-list/discussions/19
 ||aryana.io^
 ||aryacoin.io^
 ||aryastake.io^
-# https://github.com/Webamoozcom/warning-list/discussions/23
 ||cryptoland.com^
 ||bridge.link^
-# https://github.com/Webamoozcom/warning-list/discussions/26
 ||mtabdil.com^
 ||mttcoin.com^
-# https://github.com/Webamoozcom/warning-list/discussions/27
 ||unique.finance^
-# https://github.com/Webamoozcom/warning-list/discussions/29
 ||treenvest.com^
-# https://github.com/Webamoozcom/warning-list/discussions/30
 ||artanlife.club^
-# https://github.com/Webamoozcom/warning-list/discussions/34
 ||tastenfts.com^
-# https://github.com/Webamoozcom/warning-list/discussions/37
 ||bemchain.io^
-# https://github.com/Webamoozcom/warning-list/discussions/38
 ||emway.ir^
-# https://github.com/Webamoozcom/warning-list/discussions/39
 ||defigroups.com^
-# https://github.com/Webamoozcom/warning-list/discussions/43
 ||leumia.io^
-# https://github.com/Webamoozcom/warning-list/discussions/45
 ||aitrades.com^
-# https://github.com/Webamoozcom/warning-list/discussions/49
 ||propertiq.io^
-# https://github.com/Webamoozcom/warning-list/discussions/50
 ||bixbcoin.com^
 ||bixb.exchange^
-# https://github.com/Webamoozcom/warning-list/discussions/52
 ||synchrobit.io^
-# https://github.com/Webamoozcom/warning-list/discussions/56
 ||arongroups.co^
-# https://github.com/Webamoozcom/warning-list/discussions/58
 ||persia.exchange^
-# https://github.com/Webamoozcom/warning-list/discussions/60
 ||guhtoken.org^
-# https://github.com/Webamoozcom/warning-list/discussions/65
 ||orbitnetwork.net^
-# https://github.com/Webamoozcom/warning-list/discussions/66
 ||kingmoney.io^
 ||utbyte.io^
-# https://github.com/Webamoozcom/warning-list/discussions/70
 ||quahl.com^
-# https://github.com/Webamoozcom/warning-list/discussions/74
 ||gpm.ltd^
-# https://github.com/Webamoozcom/warning-list/discussions/77
 ||dagcoin.org^
-# https://github.com/Webamoozcom/warning-list/discussions/80
 ||coinwallet.biz^
-# https://github.com/Webamoozcom/warning-list/discussions/84
 ||soodland.com^
-# https://github.com/Webamoozcom/warning-list/discussions/86
-# https://github.com/Webamoozcom/warning-list/discussions/87
 ||irancoinmine.com^
-# https://github.com/Webamoozcom/warning-list/discussions/88
 ||laqira.io^
-# https://github.com/Webamoozcom/warning-list/discussions/89
 ||waykingroup.com^
-# https://github.com/Webamoozcom/warning-list/discussions/90
 ||bnbmatrix.io^
-# https://github.com/Webamoozcom/warning-list/discussions/92
 ||smartgalaxy.finance^
-# https://github.com/Webamoozcom/warning-list/discussions/94
 ||bahatoken.site^
-# https://github.com/Webamoozcom/warning-list/discussions/119
 ||shamining.com^
-# https://github.com/Webamoozcom/warning-list/discussions/129
 ||ccnnetwork.co^
-# https://github.com/Webamoozcom/warning-list/discussions/130
 ||wintap.io^
-# https://github.com/Webamoozcom/warning-list/discussions/132
 ||frzss.com^
-# https://github.com/Webamoozcom/warning-list/discussions/138
 ||hoho.mobi^
-# https://github.com/Webamoozcom/warning-list/discussions/170
 ||unitedsolarinfinity.com^
-# https://github.com/Webamoozcom/warning-list/discussions/171
 ||mogo-crypto.net^
-# https://github.com/Webamoozcom/warning-list/discussions/174
 ||tinancefa.org^
-# https://github.com/Webamoozcom/warning-list/discussions/184
 ||chancx.io^
-# https://github.com/Webamoozcom/warning-list/discussions/185
 ||falixa.com^
-# https://github.com/Webamoozcom/warning-list/discussions/192
 ||izonekala.com^
-# https://github.com/MasterKia/PersianBlocker/pull/201
-# https://webamooz.com/1402/06/25/%D9%84%D8%A7%DA%A9%D8%B3%D9%88%D9%86-laxxson-%DA%A9%D9%84%D8%A7%D9%87%D8%A8%D8%B1%D8%AF%D8%A7%D8%B1%DB%8C-%D9%BE%D8%A7%D9%86%D8%B2%DB%8C-%D8%A7%D8%B3%D8%AA/
 ||laxsson.com^
-# https://github.com/Blockunity/Warning-List/discussions/44
 ||tradergpt.ai^
 ||mat-pnu.ir^
-# https://github.com/MasterKia/PersianBlocker/issues/291
-# https://support.google.com/chrome/thread/292146023?hl=en&msgid=292530924
-# https://storage.googleapis.com/support-forums-api/attachment/thread-292146023-803929150591620091.jpg
 ||androidupdate.download^
-# AdlIran scam
 ||ewpb.site^
 ||serv.ds.kakao.com^
 ||cafe-ads-api.daum.net^
@@ -215148,6 +215038,7 @@ analytics-*.aasaam.com
 ||adaweledgerex.click^
 ||adawifi.net^
 ||adbcmodum.com^
+||adbetnet.com^
 ||adbid.biz^
 ||adbility-media.com^
 ||adbilty.me^
@@ -235494,7 +235385,6 @@ analytics-*.aasaam.com
 ||forteledger.com^
 ||fortezzahotel.com^
 ||fortgulped.com^
-||forthbycity.com^
 ||forthcomingclassroom.com^
 ||forthcomingshruggeddrift.com^
 ||forthdigestive.com^
