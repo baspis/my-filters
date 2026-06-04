@@ -15,6 +15,7 @@ from common import (  # noqa: E402
     FilterMeta,
     Merger,
     ParsedSource,
+    apply_dns_output_exclusions,
     build_filter_body,
     dedupe_exact,
     extract_rules_from_filter_text,
@@ -64,6 +65,15 @@ class TestParseRules(unittest.TestCase):
         rules, kept, _ = parse_rules(self.SAMPLE, keep_exceptions=True)
         self.assertEqual(kept, 1)
         self.assertIn("@@||allow.example^", rules)
+
+
+class TestDnsOutputExclusions(unittest.TestCase):
+    def test_drops_rsc_cdn77_parent(self) -> None:
+        rules = ["||rsc.cdn77.org^", "||1991482557.rsc.cdn77.org^", "||evil.com^"]
+        out, n = apply_dns_output_exclusions(rules)
+        self.assertEqual(n, 1)
+        self.assertNotIn("||rsc.cdn77.org^", out)
+        self.assertIn("||1991482557.rsc.cdn77.org^", out)
 
 
 class TestDedupeExact(unittest.TestCase):

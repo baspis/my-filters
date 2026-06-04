@@ -45,6 +45,14 @@ HTML_MARKERS = re.compile(
 
 REQUIRED_HEADER_KEYS = ("Title:", "Description:", "Homepage:", "License:", "Last modified:")
 
+# Broad DNS blocks that break legitimate services when this list is used as
+# recursive DNS (e.g. AdGuard Home + AdGuard app filter updates via filters.adtidy.org).
+DNS_OUTPUT_EXCLUDED_RULES: frozenset[str] = frozenset(
+    {
+        "||rsc.cdn77.org^",
+    }
+)
+
 
 @dataclass(frozen=True)
 class SourceSpec:
@@ -160,6 +168,18 @@ def parse_rules(
             continue
         rules.append(line)
     return rules, kept, dropped
+
+
+def apply_dns_output_exclusions(rules: list[str]) -> tuple[list[str], int]:
+    """Drop known-problematic rules from DNS output; returns (rules, excluded_count)."""
+    excluded = 0
+    kept: list[str] = []
+    for rule in rules:
+        if rule in DNS_OUTPUT_EXCLUDED_RULES:
+            excluded += 1
+            continue
+        kept.append(rule)
+    return kept, excluded
 
 
 def dedupe_exact(rules: list[str]) -> tuple[list[str], int]:

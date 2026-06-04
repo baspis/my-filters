@@ -60,6 +60,7 @@ Invalid or empty responses are not written to cache. If all URLs fail and cache 
 - **Validation:** Non-empty UTF-8 text, not HTML, no NUL/binary; per-source minimum rule counts; merged output minimums; optional drop guard vs previous publish (see `build/common.py`).
 - **Failure:** Required sources must succeed; incomplete filters are not published; existing `dns/filter.txt` / `ad/filter.txt` are left unchanged on failure (atomic write to temp, then replace).
 - **Idempotent output:** If rule bodies are unchanged, the output file is not rewritten and `! Last modified:` is preserved (no header-only commits).
+- **DNS exclusions:** `||rsc.cdn77.org^` is omitted from `dns/filter.txt` because it blocks `filters.adtidy.org` (CNAME) and breaks AdGuard app filter updates when this list is your recursive DNS (e.g. AdGuard Home on a VPS). Specific `*.rsc.cdn77.org` entries are kept.
 
 ### Requirements
 

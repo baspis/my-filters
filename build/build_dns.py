@@ -11,6 +11,7 @@ from common import (
     Merger,
     MergeStats,
     SourceSpec,
+    apply_dns_output_exclusions,
     fetch_first_validated,
     fetch_validated_source,
     fetch_with_cache,
@@ -76,7 +77,8 @@ def merge() -> tuple[list[str], list[str], MergeStats, int]:
     sources.append(blocker)
     merger.add_source(blocker)
 
-    rules = merger.rules
+    rules, excluded = apply_dns_output_exclusions(merger.rules)
+    merger.log.append(f"DNS output exclusions: {excluded}")
     return rules, merger.log, MergeStats(sources=sources), merger.duplicates_removed
 
 

@@ -2,7 +2,7 @@
 ! Description: AdGuard #15 + HaGeZi Multi PRO + 280blocker domain_ag (exact-match dedupe; @@ exceptions excluded)
 ! Homepage: https://github.com/baspis/my-filters
 ! License: See README (sources retain their own licenses)
-! Last modified: 2026-06-04 12:18 JST
+! Last modified: 2026-06-04 12:41 JST
 !
 ! Source: AdGuard DNS filter (#15, AdGuardSDNSFilter mirror) - https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
 ! Source: HaGeZi Multi PRO - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
@@ -276779,7 +276779,6 @@ analytics-*.aasaam.com
 ||widgets.amung.us^
 ||grunoaph.net^
 ||grirtouy.com^
-||rsc.cdn77.org^
 ||truthful-quote.pro^
 ||aghffniwjd.ywufsjhc4.jp^
 ||xkqpwpxovmf.com^
