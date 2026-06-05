@@ -11,3 +11,5 @@ https://raw.githubusercontent.com/baspis/my-filters/main/dns/filter.txt
 `@@` exception rules from upstream are **not** included. See the [root README](../README.md).
 
 The parent rule `||rsc.cdn77.org^` is intentionally excluded from output, while more specific `*.rsc.cdn77.org` entries are kept.
+
+Browser geolocation backends (Mozilla Location Service, Google/Chrome geolocation API, Apple location services) are also omitted from output so Zen/Firefox, Chrome, and Safari can provide location when this list is your recursive DNS.
