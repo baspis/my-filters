@@ -46,26 +46,11 @@ PREPROCESSOR_DIRECTIVE = re.compile(r"^!#(?:include|if|endif)\b")
 
 REQUIRED_HEADER_KEYS = ("Title:", "Description:", "Homepage:", "License:", "Last modified:")
 
-DNS_RULE_HOST = re.compile(r"^\|\|([^\^$/]+)")
-
 # Broad DNS blocks that break legitimate services when this list is used as
 # recursive DNS (e.g. AdGuard Home + AdGuard app filter updates via filters.adtidy.org).
 DNS_OUTPUT_EXCLUDED_RULES: frozenset[str] = frozenset(
     {
         "||rsc.cdn77.org^",
-    }
-)
-
-# Browser geolocation backends. Upstream tracker lists often block these; keep them
-# reachable when this file is recursive DNS (Zen/Firefox, Chrome, Safari).
-BROWSER_GEOLOCATION_HOSTS: frozenset[str] = frozenset(
-    {
-        "location.services.mozilla.com",
-        "geo.mozilla.org",
-        "www.googleapis.com",
-        "maps.googleapis.com",
-        "gsp-ssl.ls.apple.com",
-        "ls.apple.com",
     }
 )
 
@@ -206,10 +191,6 @@ def apply_dns_output_exclusions(rules: list[str]) -> tuple[list[str], int]:
     kept: list[str] = []
     for rule in rules:
         if rule in DNS_OUTPUT_EXCLUDED_RULES:
-            excluded += 1
-            continue
-        host_match = DNS_RULE_HOST.match(rule)
-        if host_match and host_match.group(1) in BROWSER_GEOLOCATION_HOSTS:
             excluded += 1
             continue
         kept.append(rule)

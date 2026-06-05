@@ -91,26 +91,6 @@ class TestDnsOutputExclusions(unittest.TestCase):
         self.assertNotIn("||rsc.cdn77.org^", out)
         self.assertIn("||1991482557.rsc.cdn77.org^", out)
 
-    def test_preserves_browser_geolocation_hosts(self) -> None:
-        rules = [
-            "||location.services.mozilla.com^",
-            "||geo.mozilla.org^",
-            "||www.googleapis.com^",
-            "||maps.googleapis.com^",
-            "||gsp-ssl.ls.apple.com^",
-            "||telemetry.googleapis.com^",
-            "||geolocation.forbes.com^",
-        ]
-        out, n = apply_dns_output_exclusions(rules)
-        self.assertEqual(n, 5)
-        self.assertNotIn("||location.services.mozilla.com^", out)
-        self.assertNotIn("||geo.mozilla.org^", out)
-        self.assertNotIn("||www.googleapis.com^", out)
-        self.assertNotIn("||maps.googleapis.com^", out)
-        self.assertNotIn("||gsp-ssl.ls.apple.com^", out)
-        self.assertIn("||telemetry.googleapis.com^", out)
-        self.assertIn("||geolocation.forbes.com^", out)
-
 
 class TestDedupeExact(unittest.TestCase):
     def test_exact_only(self) -> None:
